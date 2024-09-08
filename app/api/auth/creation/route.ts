@@ -33,7 +33,7 @@ export async function GET() {
     }
     return NextResponse.redirect(
       process.env.NODE_ENV === "production"
-        ? "https://blog-forge.vercel.app/dasboard"
+        ? "https://blog-forge.vercel.app/dashboard"
         : "http://localhost:3000/dashboard"
     );
   } catch (error) {
