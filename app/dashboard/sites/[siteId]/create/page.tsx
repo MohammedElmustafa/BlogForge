@@ -152,10 +152,6 @@ export default function ArticleCreationRoute({
                 />
               ) : (
                 <UploadDropzone
-                className=" ut-button:bg-primary/10 ut-button:text-primary 
-                            ut-label:text-primary
-                            ut-upload-icon:text-primary
-                            ut-allowed-content:text-primary"
                     onClientUploadComplete={(res) => {
                     setImageUrl(res[0].url);
                     toast.success("Image has been uploaded");

@@ -40,10 +40,6 @@ export function UploadImageForm({ siteId }: iAppProps) {
           />
         ) : (
           <UploadDropzone
-          className=" ut-button:bg-primary/10 ut-button:text-primary 
-                      ut-label:text-primary
-                      ut-upload-icon:text-primary
-                      ut-allowed-content:text-primary"
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {
               setImageUrl(res[0].url);
