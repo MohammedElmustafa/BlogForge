@@ -1,4 +1,5 @@
 import { RenderArticle } from "@/app/components/dashboard/RenderArticle";
+import { Footer } from "@/app/components/frontend/Footer";
 import prisma from "@/app/utils/db";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
@@ -74,6 +75,7 @@ export default async function SlugRoute({
       </div>
 
       <RenderArticle json={data.articleContent as JSONContent} />
+      <Footer />
     </>
   );
 }

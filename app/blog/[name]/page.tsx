@@ -13,6 +13,7 @@ import {
 import Defaultimage from "@/public/default.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Footer } from "@/app/components/frontend/Footer";
 
 async function getData(subDir: string) {
   const data = await prisma.site.findUnique({
@@ -55,7 +56,9 @@ export default async function BlogIndexPage({
       <nav className="grid grid-cols-3 my-10">
         <div className="col-span-1" />
         <div className="flex items-center gap-x-4 justify-center">
-          <Image src={Logo} alt="Logo" width={150} height={150} />
+          <Link href="/">
+            <Image src={Logo} alt="Logo" width={150} height={150} />
+          </Link>
         </div>
         <div className="col-span-1 flex w-full justify-end">
           <ThemeToggle />
@@ -91,6 +94,7 @@ export default async function BlogIndexPage({
           </Card>
         ))}
       </div>
+      <Footer />
     </>
   );
 }
