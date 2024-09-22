@@ -13,11 +13,15 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
 
-export  function Hero() {
-  const { theme } = useTheme();
-  const HeroImage = theme === "dark" ? HeroImageDark : HeroImageLight;
-
+export function Hero() {
+  const { theme, resolvedTheme } = useTheme();
+  const [isThemeLoaded, setIsThemeLoaded] = useState(false);
   const [session, setSession] = useState<KindeUser<any> | null>(null);
+
+  useEffect(() => {
+    setIsThemeLoaded(true);
+  }, [theme]);
+
   useEffect(() => {
     const fetchSession = async () => {
       if (typeof window === "undefined") {
@@ -27,9 +31,10 @@ export  function Hero() {
         setSession(sessionData);
       }
     };
-    
+
     fetchSession();
   }, []);
+  const HeroImage = resolvedTheme === "dark" ? HeroImageDark : HeroImageLight;
 
   return (
     <>
@@ -88,12 +93,14 @@ export  function Hero() {
           </div>
 
           <div className="relative items-center w-full py-12 mx-auto mt-12">
-            <Image
-              src={HeroImage}
-              alt="Hero image"
-              priority
-              className="relative object-cover w-full border rounded-lg shadow-2xl lg:rounded-2xl"
-            />
+            {isThemeLoaded ? (
+              <Image
+                src={HeroImage}
+                alt="Hero image"
+                priority
+                className="relative object-cover w-full border rounded-lg shadow-2xl lg:rounded-2xl"
+              />
+            ) : null}
           </div>
         </div>
       </section>
