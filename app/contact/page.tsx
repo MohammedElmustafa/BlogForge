@@ -42,10 +42,10 @@ export default function ContactUsRoute() {
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">Contact Us</h1>
           <p className="text-sm font-semibold leading-7 text-primary uppercase tracking-wide">
-            We're here to help
+            We&apos;re here to help
           </p>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Have questions or feedback? We'd love to hear from you! Please fill out the form below.
+            Have questions or feedback? We&apos;d love to hear from you! Please fill out the form below.
           </p>
         </div>
         <br /> <br />
@@ -53,7 +53,7 @@ export default function ContactUsRoute() {
           <CardHeader>
           <CardTitle>Contact Us</CardTitle>
             <CardDescription>
-              We'd love to hear from you! Please fill out the form below.
+              We&apos;d love to hear from you! Please fill out the form below.
             </CardDescription>
           </CardHeader>
           <form id={form.id}onSubmit={form.onSubmit} action={action}>

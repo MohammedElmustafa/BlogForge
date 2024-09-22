@@ -75,7 +75,7 @@ export default async function PrivacyRoute() {
             We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. However, please be aware that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee its absolute security.
           </p>
 
-          <h2 className="mt-4 text-2xl font-bold">7. Children's Privacy</h2>
+          <h2 className="mt-4 text-2xl font-bold">7. Children&apos;s Privacy</h2>
           <p className="mt-2">
             Our Site is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected personal information from a child under 13, we will take steps to remove that information from our servers promptly. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us.
           </p>
@@ -106,7 +106,7 @@ export default async function PrivacyRoute() {
 
           <h2 className="mt-4 text-2xl font-bold">12. Links to Other Sites</h2>
           <p className="mt-2">
-            Our Site may contain links to other sites that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy and terms of service of any site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+            Our Site may contain links to other sites that are not operated by us. If you click on a third-party link, you will be directed to that third party&apos;s site. We strongly advise you to review the Privacy Policy and terms of service of any site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
           </p>
 
           <h2 className="mt-4 text-2xl font-bold">13. International Data Transfers</h2>

@@ -62,7 +62,7 @@ export default function TermsPage(): JSX.Element {
             <p>This means that if someone makes a claim against us because of your actions, you will be responsible for any damages or expenses we incur.</p>
             <h2 className="text-2xl font-bold">11. Governing Law</h2>
             <p>These terms are governed by the laws of Any Country. Any disputes will be resolved in the courts of [Your Location].</p>
-            <p>We encourage users to resolve any disputes amicably before seeking legal action. In the event of a legal dispute, the prevailing party may be entitled to recover reasonable attorneys' fees.</p>
+            <p>We encourage users to resolve any disputes amicably before seeking legal action. In the event of a legal dispute, the prevailing party may be entitled to recover reasonable attorneys&apos; fees.</p>
             <h2 className="text-2xl font-bold">12. Contact Information</h2>
             <p>If you have any questions about these terms, please contact us at info@blogforge.net. We value your feedback and are here to assist you with any concerns.</p>
             <h2 className="text-2xl font-bold">13. User Responsibilities</h2>
