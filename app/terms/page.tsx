@@ -55,7 +55,7 @@ export default function TermsPage(): JSX.Element {
             <p>We reserve the right to terminate or suspend your access to our service if you violate these terms. In case of termination, you will receive a notification explaining the reason for the action.</p>
             <p>You may also terminate your account at any time by contacting us. However, please note that termination does not absolve you of any obligations arising before the termination.</p>
             <h2 className="text-2xl font-bold">9. Disclaimer of Warranties</h2>
-            <p>Our service is provided "as is" without any warranties of any kind. We do not guarantee uninterrupted or error-free service.</p>
+            <p>Our service is provided &quot;as is&quot; without any warranties of any kind. We do not guarantee uninterrupted or error-free service.</p>
             <p>While we strive to provide high-quality services, we do not warrant that the service will meet your expectations or that all errors will be corrected promptly.</p>
             <h2 className="text-2xl font-bold">10. Indemnification</h2>
             <p>You agree to indemnify and hold us harmless from any claims arising from your use of the service or your violation of these terms.</p>

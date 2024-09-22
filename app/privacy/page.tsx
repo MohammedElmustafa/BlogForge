@@ -21,7 +21,7 @@ export default async function PrivacyRoute() {
           </p>
           <h2 className="mt-4 text-2xl font-bold">1. Introduction</h2>
           <p className="mt-2">
-            At Blog Forge, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and share information about you when you use our website blogforge.net (the "Site"). We aim to be transparent about our practices, so you can make informed decisions about your interactions with us.
+            At Blog Forge, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and share information about you when you use our website blogforge.net (the &quot;Site&quot;). We aim to be transparent about our practices, so you can make informed decisions about your interactions with us.
           </p>
 
           <h2 className="mt-4 text-2xl font-bold">2. Information We Collect</h2>
@@ -101,7 +101,7 @@ export default async function PrivacyRoute() {
 
           <h2 className="mt-4 text-2xl font-bold">11. Third-Party Services</h2>
           <p className="mt-2">
-            We may employ third-party companies and individuals to facilitate our Site ("Service Providers"), provide the Service on our behalf, perform Service-related services, or assist us in analyzing how our Site is used. These third parties may have access to your personal information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
+            We may employ third-party companies and individuals to facilitate our Site (&quot;Service Providers&quot;), provide the Service on our behalf, perform Service-related services, or assist us in analyzing how our Site is used. These third parties may have access to your personal information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
           </p>
 
           <h2 className="mt-4 text-2xl font-bold">12. Links to Other Sites</h2>
