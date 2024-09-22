@@ -14,6 +14,11 @@ export const PostSchema = z.object({
   smallDescription: z.string().min(1).max(200),
   articleContent: z.string().min(1),
 });
+export const ContactMessageSchema  = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  message: z.string().min(1, "Message is required"),
+});
 
 export function SiteCreationSchema(options?: {
   isSubdirectoryUnique: () => Promise<boolean>;

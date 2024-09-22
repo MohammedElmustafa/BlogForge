@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { parseWithZod } from "@conform-to/zod";
-import { PostSchema, SiteCreationSchema, siteSchema } from "./utils/zodSchemas";
+import { PostSchema, SiteCreationSchema, siteSchema, ContactMessageSchema } from "./utils/zodSchemas";
 import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
 import { stripe } from "./utils/stripe";
@@ -239,4 +239,24 @@ export async function CreateSubscription() {
   });
 
   return redirect(session.url as string);
+}
+
+export async function CreateContactMessageAction(prevState: any,formData: FormData) {
+  const submission = await parseWithZod(formData, {
+    schema: ContactMessageSchema,
+  });
+
+  if (submission.status !== "success") {
+    return submission.reply();
+  }
+
+  await prisma.contactMessage.create({
+    data: {
+      name: submission.value.name,
+      email: submission.value.email,
+      message: submission.value.message,
+    },
+  });
+
+  return redirect("/");
 }

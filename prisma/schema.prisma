@@ -74,3 +74,11 @@ model Subscription {
   User   User?   @relation(fields: [userId], references: [id])
   userId String? @unique
 }
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
