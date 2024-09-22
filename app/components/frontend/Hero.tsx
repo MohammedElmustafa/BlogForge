@@ -44,29 +44,31 @@ export function Hero() {
         <div className="flex flex-row items-center justify-between text-sm lg:justify-start">
           <Link href="/" className="flex items-center gap-2">
             <Image src={Logo} className="size-10" alt="Logo" />
+
             <h4 className="text-3xl font-semibold">
               Blog<span className="text-primary">Forge</span>
             </h4>
           </Link>
+          <div className="md:hidden">
+            <ThemeToggle />
+          </div>
         </div>
         <nav className="hidden md:flex md:justify-end md:space-x-4">
-          <ThemeToggle />
-          {session?.id ? (
-            <Link href="/dashboard">
-              <Button variant="secondary">
-                <LucideLayoutDashboard />
-              </Button>
-            </Link>
-          ) : (
-            <>
-              <LoginLink>
-                <Button variant="secondary">Sign in</Button>
-              </LoginLink>
-              <RegisterLink>
-                <Button>Sign up</Button>
-              </RegisterLink>
-            </>
-          )}
+        <ThemeToggle />
+        {session?.id ? (
+          <Link href="/dashboard">
+            <Button variant="secondary"><LucideLayoutDashboard /> </Button>
+          </Link>
+        ) : (
+          <>
+          <LoginLink>
+            <Button variant="secondary">Sign in</Button>
+          </LoginLink>
+          <RegisterLink>
+            <Button>Sign up</Button>
+          </RegisterLink>
+          </>
+        )}
         </nav>
       </div>
     </>
