@@ -34,7 +34,7 @@ export const navLinks = [
   },
 ];
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default function AdminDashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const router = useRouter();
 
