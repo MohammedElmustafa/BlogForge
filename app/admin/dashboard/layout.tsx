@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ReactNode, useState } from "react";
 import Logo from "@/public/logo-Letter.svg";
 import Image from "next/image";
-import { CircleUser, Globe, Home, Menu, User } from "lucide-react";
+import { CircleUser, Menu} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,24 +15,6 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/app/components/dashboard/ThemeToggle";
 import { DashboardItems } from "@/app/components/admindashboard/DashboardItems";
 import { useRouter } from "next/navigation";
-
-export const navLinks = [
-  {
-    name: "Dashboard",
-    href: "/admin/dashboard",
-    icon: Home,
-  },
-  {
-    name: "Sites",
-    href: "/admin/dashboard/sites",
-    icon: Globe,
-  },
-  {
-    name: "Users",
-    href: "/admin/dashboard/users",
-    icon: User,
-  },
-];
 
 export default function AdminDashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
