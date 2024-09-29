@@ -16,7 +16,7 @@ import { ThemeToggle } from "@/app/components/dashboard/ThemeToggle";
 import { DashboardItems } from "@/app/components/admindashboard/DashboardItems";
 import { useRouter } from "next/navigation";
 
-export const navLinks = [
+const navLinks = [
   {
     name: "Dashboard",
     href: "/admin/dashboard",
@@ -45,6 +45,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       router.push("/admin");
     }
   };
+
   return (
     <section className="relative grid min-h-screen w-full grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div
@@ -90,10 +91,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem asChild>
-                <button onClick={handleLogout}>Log out</button>
+                  <button onClick={handleLogout}>Log out</button>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                <button>System</button>
+                  <button>System</button>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
