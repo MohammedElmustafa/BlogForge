@@ -28,16 +28,15 @@ export async function CreateSiteAction(prevState: any, formData: FormData) {
 
   if (!subStatus || subStatus.status !== "active") {
     if (sites.length < 1) {
-      // Allow creating a site
       const submission = await parseWithZod(formData, {
         schema: SiteCreationSchema({
           async isSubdirectoryUnique() {
-            const exisitngSubDirectory = await prisma.site.findUnique({
+            const existingSubDirectory = await prisma.site.findUnique({
               where: {
                 subdirectory: formData.get("subdirectory") as string,
               },
             });
-            return !exisitngSubDirectory;
+            return !existingSubDirectory;
           },
         }),
         async: true,
@@ -53,25 +52,24 @@ export async function CreateSiteAction(prevState: any, formData: FormData) {
           name: submission.value.name,
           subdirectory: submission.value.subdirectory,
           userId: user.id,
+          status: "published",
         },
       });
 
       return redirect("/dashboard/sites");
     } else {
-      // user alredy has one site dont allow
       return redirect("/dashboard/pricing");
     }
   } else if (subStatus.status === "active") {
-    // User has a active plan he can create sites...
     const submission = await parseWithZod(formData, {
       schema: SiteCreationSchema({
         async isSubdirectoryUnique() {
-          const exisitngSubDirectory = await prisma.site.findUnique({
+          const existingSubDirectory = await prisma.site.findUnique({
             where: {
               subdirectory: formData.get("subdirectory") as string,
             },
           });
-          return !exisitngSubDirectory;
+          return !existingSubDirectory;
         },
       }),
       async: true,
@@ -87,11 +85,14 @@ export async function CreateSiteAction(prevState: any, formData: FormData) {
         name: submission.value.name,
         subdirectory: submission.value.subdirectory,
         userId: user.id,
+        status: "published",
       },
     });
+    
     return redirect("/dashboard/sites");
   }
 }
+
 export async function CreatePostAction(prevState: any, formData: FormData) {
   const user = await requireUser();
 
@@ -173,6 +174,21 @@ export async function UpdateImage(formData: FormData) {
   });
 
   return redirect(`/dashboard/sites/${formData.get("siteId")}`);
+}
+
+export async function AdminUpdateUserSiteImage(formData: FormData) {
+  const siteId = formData.get("siteId") as string;
+
+  const data = await prisma.site.update({
+    where: {
+      id: siteId,
+    },
+    data: {
+      imageUrl: formData.get("imageUrl") as string,
+    },
+  });
+
+  return redirect(`/dashboard/sites/${siteId}`);
 }
 
 export async function DeleteSite(formData: FormData) {

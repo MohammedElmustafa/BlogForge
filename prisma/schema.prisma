@@ -30,11 +30,19 @@ model User {
   Subscription Subscription?
 }
 
+model Admin {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
 model Site {
   id           String   @id @default(uuid())
   name         String
   description  String
   subdirectory String   @unique
+  status String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
