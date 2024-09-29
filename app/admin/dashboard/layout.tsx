@@ -16,7 +16,7 @@ import { ThemeToggle } from "@/app/components/dashboard/ThemeToggle";
 import { DashboardItems } from "@/app/components/admindashboard/DashboardItems";
 import { useRouter } from "next/navigation";
 
-const navLinks = [
+export const navLinks = [
   {
     name: "Dashboard",
     href: "/admin/dashboard",
