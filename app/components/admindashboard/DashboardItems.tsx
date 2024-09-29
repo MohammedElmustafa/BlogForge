@@ -1,9 +1,9 @@
 "use client";
 
-import { navLinks } from "@/app/admin/dashboard/layout";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { navLinks } from "./navLinks";
 
 export function DashboardItems() {
   const pathname = usePathname();

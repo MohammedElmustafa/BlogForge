@@ -16,23 +16,7 @@ import { ThemeToggle } from "@/app/components/dashboard/ThemeToggle";
 import { DashboardItems } from "@/app/components/admindashboard/DashboardItems";
 import { useRouter } from "next/navigation";
 
-export const navLinks = [
-  {
-    name: "Dashboard",
-    href: "/admin/dashboard",
-    icon: Home,
-  },
-  {
-    name: "Sites",
-    href: "/admin/dashboard/sites",
-    icon: Globe,
-  },
-  {
-    name: "Users",
-    href: "/admin/dashboard/users",
-    icon: User,
-  },
-];
+
 
 export default function AdminDashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
