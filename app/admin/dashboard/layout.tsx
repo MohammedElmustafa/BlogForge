@@ -29,7 +29,7 @@ export const navLinks = [
   },
   {
     name: "Users",
-    href: "/admin/dashboard/Users",
+    href: "/admin/dashboard/users",
     icon: User,
   },
 ];
