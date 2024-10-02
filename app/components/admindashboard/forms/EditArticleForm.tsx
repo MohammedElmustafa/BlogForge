@@ -14,8 +14,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Atom } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
-import TailwindEditor from "../EditorWrapper";
-import { SubmitButton } from "../SubmitButtons";
 import { useState } from "react";
 import { JSONContent } from "novel";
 import { useForm } from "@conform-to/react";
@@ -25,6 +23,8 @@ import { EditPostActions } from "@/app/actions";
 import slugify from "react-slugify";
 import { useFormState } from "react-dom";
 import { UploadDropzone } from "@/app/utils/uploadthingComponents";
+import TailwindEditor from "../../dashboard/EditorWrapper";
+import { SubmitButton } from "../../dashboard/SubmitButtons";
 
 interface iAppProps {
   data: {
