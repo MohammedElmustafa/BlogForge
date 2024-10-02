@@ -19,7 +19,7 @@ export default function AdminLogin() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     const res = await fetch("/api/admin", {
       method: "POST",
       headers: {
@@ -27,15 +27,18 @@ export default function AdminLogin() {
       },
       body: JSON.stringify({ username, password }),
     });
-
+  
     if (res.ok) {
       sessionStorage.setItem("isAdmin", "true");
+      sessionStorage.setItem("username", username);
+      sessionStorage.setItem("password", password);
       router.push("/admin/dashboard");
     } else {
       const { error } = await res.json();
       alert(error);
     }
   };
+  
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">

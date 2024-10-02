@@ -6,6 +6,9 @@ import { PostSchema, SiteCreationSchema, siteSchema, ContactMessageSchema } from
 import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
 import { stripe } from "./utils/stripe";
+import { NextApiRequest, NextApiResponse } from "next";
+import bcrypt from 'bcrypt';
+import { NextResponse } from "next/server";
 
 export async function CreateSiteAction(prevState: any, formData: FormData) {
   const user = await requireUser();
@@ -188,7 +191,7 @@ export async function AdminUpdateUserSiteImage(formData: FormData) {
     },
   });
 
-  return redirect(`/dashboard/sites/${siteId}`);
+  return redirect(`/admin/dashboard/sites/`);
 }
 
 export async function DeleteSite(formData: FormData) {
@@ -254,6 +257,18 @@ export async function CreateSubscription() {
         : "http://localhost:3000/dashboard/payment/cancelled",
   });
 
+  await prisma.subscription.create({
+    data: {
+      stripeSubscriptionId: session.id,
+      interval: "month",
+      status: "active",
+      planId: process.env.STRIPE_PRICE_ID as string,
+      currentPeriodStart: Math.floor(Date.now() / 1000),
+      currentPeriodEnd: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
+      userId: user.id,
+    },
+  });
+  
   return redirect(session.url as string);
 }
 
@@ -276,3 +291,25 @@ export async function CreateContactMessageAction(prevState: any,formData: FormDa
 
   return redirect("/");
 }
+
+export const requireAdminUser = async (username: string, password: string) => {
+  const adminUser = await prisma.admin.findUnique({
+    where: { username: username },
+  });
+  console.log("Admin user retrieved:", adminUser);
+
+  if (!adminUser) {
+    console.log("Admin user not found");
+    return null;
+  }
+  
+  const isPasswordValid = await bcrypt.compare(password, adminUser.password);
+  console.log("Is password valid?", isPasswordValid);
+
+  if (!isPasswordValid) {
+    console.log("Invalid password");
+    return null;
+  }
+  
+  return adminUser;
+};

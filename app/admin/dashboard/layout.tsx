@@ -1,10 +1,9 @@
 "use client";
-
 import Link from "next/link";
 import { ReactNode, useState } from "react";
 import Logo from "@/public/logo-Letter.svg";
 import Image from "next/image";
-import { CircleUser, Menu} from "lucide-react";
+import { CircleUser, Menu } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,11 +14,9 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/app/components/dashboard/ThemeToggle";
 import { DashboardItems } from "@/app/components/admindashboard/DashboardItems";
 import { useRouter } from "next/navigation";
-
 export default function AdminDashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const router = useRouter();
-
   const handleLogout = () => {
     const isAdmin = sessionStorage.getItem("isAdmin");
     if (isAdmin === "true") {
@@ -27,11 +24,10 @@ export default function AdminDashboardLayout({ children }: { children: ReactNode
       router.push("/admin");
     }
   };
-
   return (
     <section className="relative grid min-h-screen w-full grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div
-        className={`fixed inset-y-0 left-0 z-40 w-64 transform bg-muted opacity-100 transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 w-64 bg-muted transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -44,7 +40,7 @@ export default function AdminDashboardLayout({ children }: { children: ReactNode
               </h3>
             </Link>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 overflow-y-auto">
             <nav className="grid items-start px-2 font-medium lg:px-4">
               <DashboardItems />
             </nav>
@@ -59,7 +55,7 @@ export default function AdminDashboardLayout({ children }: { children: ReactNode
           >
             <Menu className="h-6 w-6" />
           </button>
-          <div className="flex items-center gap-x-3 lg:gap-x-5">
+          <div className="ml-auto flex items-center gap-x-3 lg:gap-x-5">
             <ThemeToggle />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -88,7 +84,7 @@ export default function AdminDashboardLayout({ children }: { children: ReactNode
       </div>
       {sidebarOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black opacity-70 md:hidden"
+          className="fixed inset-0 z-30 bg-black opacity-50 md:hidden"
           onClick={() => setSidebarOpen(false)}
         ></div>
       )}
