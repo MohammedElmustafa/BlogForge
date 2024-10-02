@@ -5,7 +5,7 @@ import { ReactNode, useState } from "react";
 import Logo from "@/public/logo-Letter.svg";
 import Image from "next/image";
 import { DashboardItems } from "../components/dashboard/DashboardItems";
-import { CircleUser, DollarSign, Globe, Home, Menu } from "lucide-react";
+import { CircleUser, Menu } from "lucide-react";
 import { ThemeToggle } from "../components/dashboard/ThemeToggle";
 import {
   DropdownMenu,
@@ -15,24 +15,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
-
-export const navLinks = [
-  {
-    name: "Dashboard",
-    href: "/dashboard",
-    icon: Home,
-  },
-  {
-    name: "Sites",
-    href: "/dashboard/sites",
-    icon: Globe,
-  },
-  {
-    name: "Pricing",
-    href: "/dashboard/pricing",
-    icon: DollarSign,
-  },
-];
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
