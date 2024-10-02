@@ -55,7 +55,7 @@ export default function EditUserPage({ params }: { params: { userId: string } })
         <CardHeader>
           <CardTitle>Edit User</CardTitle>
           <CardDescription>
-            Update user details here. Click the button below when you're done...
+            Update user details here. Click the button below when you&apos;re done...
           </CardDescription>
         </CardHeader>
         <form onSubmit={form.handleSubmit(onSubmit)}>

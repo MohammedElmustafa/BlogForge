@@ -67,7 +67,7 @@ export default async function AdminDashboardUsers() {
                     <TableRow key={user.id}>
                       <TableCell className="text-left">
                         <img
-                          src={user.profileImage || "/default-profile.png"}
+                          src={user.profileImage}
                           alt="Profile Image"
                           className="h-12 w-12 rounded-full object-cover"
                         />
