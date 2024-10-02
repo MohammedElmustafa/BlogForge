@@ -49,7 +49,7 @@ export default function DeleteForm({ params }: { params: { userId: string } }) {
     console.log(data);
 
     if (data.success) {
-      router.push('/admin/dashboard/users');
+      router.push('/admin/dashboard/Users');
       setTimeout(() => {
         window.location.reload();
       }, 100);
@@ -71,7 +71,7 @@ export default function DeleteForm({ params }: { params: { userId: string } }) {
         </CardHeader>
         <CardFooter className="w-full flex justify-between">
           <Button variant="secondary" asChild>
-            <Link href={`/dashboard/users/${params.userId}`}>Cancel</Link>
+            <Link href={`/dashboard/Users/${params.userId}`}>Cancel</Link>
           </Button>
           <form onSubmit={handleSubmit}>
             <input type="hidden" name="userId" value={params.userId} />

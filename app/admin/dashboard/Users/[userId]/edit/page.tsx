@@ -43,7 +43,7 @@ export default function EditUserPage({ params }: { params: { userId: string } })
       body: JSON.stringify(data),
     });
     if (response.ok) {
-      router.push('/admin/dashboard/users');
+      router.push('/admin/dashboard/Users');
     } else {
       const errorResponse = await response.json();
       console.error('Failed to update user:', errorResponse.error);

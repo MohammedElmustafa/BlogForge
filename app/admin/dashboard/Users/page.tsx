@@ -101,12 +101,12 @@ export default async function AdminDashboardUsers() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuItem asChild>
-                              <Link href={`/admin/dashboard/users/${user.id}/edit`}>
+                              <Link href={`/admin/dashboard/Users/${user.id}/edit`}>
                                 Edit
                               </Link>
                             </DropdownMenuItem>
                             <DropdownMenuItem asChild>
-                              <Link href={`/admin/dashboard/users/${user.id}/delete`}>
+                              <Link href={`/admin/dashboard/Users/${user.id}/delete`}>
                                 Delete
                               </Link>
                             </DropdownMenuItem>
