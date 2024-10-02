@@ -19,7 +19,7 @@ export function DashboardItems() {
     },
     {
       name: "Users",
-      href: "/admin/dashboard/users",
+      href: "/admin/dashboard/Users",
       icon: User,
     },
   ];

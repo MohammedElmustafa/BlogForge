@@ -1,6 +1,7 @@
 "use client";
+
 import Link from "next/link";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Logo from "@/public/logo-Letter.svg";
 import Image from "next/image";
 import { CircleUser, Menu } from "lucide-react";
@@ -14,16 +15,28 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/app/components/dashboard/ThemeToggle";
 import { DashboardItems } from "@/app/components/admindashboard/DashboardItems";
 import { useRouter } from "next/navigation";
+
 export default function AdminDashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null); // State to hold admin status
   const router = useRouter();
-  const handleLogout = () => {
-    const isAdmin = sessionStorage.getItem("isAdmin");
-    if (isAdmin === "true") {
-      sessionStorage.removeItem("isAdmin");
+
+  useEffect(() => {
+    const adminStatus = sessionStorage.getItem("isAdmin");
+    if (adminStatus !== "true") {
       router.push("/admin");
+    } else {
+      setIsAdmin(true);
     }
+  }, [router]);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("isAdmin");
+    router.push("/admin");
   };
+  if (isAdmin === null) {
+    return(<div></div>);
+  }
   return (
     <section className="relative grid min-h-screen w-full grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div

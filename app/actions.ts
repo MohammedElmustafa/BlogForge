@@ -6,9 +6,7 @@ import { PostSchema, SiteCreationSchema, siteSchema, ContactMessageSchema } from
 import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
 import { stripe } from "./utils/stripe";
-import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from 'bcrypt';
-import { NextResponse } from "next/server";
 
 export async function CreateSiteAction(prevState: any, formData: FormData) {
   const user = await requireUser();

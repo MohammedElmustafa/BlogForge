@@ -55,6 +55,7 @@ async function getAllSites() {
 }
 
 export default async function AdminDashboard() {
+  
   const sites = await getAllSites();
 
   return (
