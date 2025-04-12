@@ -14,6 +14,9 @@ export function Footer() {
                 </p>
             </div>
             <nav className="flex flex-col md:flex-row md:justify-center md:space-x-6 space-y-2 md:space-y-0">
+                <Link href="/blog" className="text-gray-400 hover:text-primary transition duration-200">
+                    All Blogs
+                </Link>
                 <Link href="/about" className="text-gray-400 hover:text-primary transition duration-200">
                     About Us
                 </Link>
