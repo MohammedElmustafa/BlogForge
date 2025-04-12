@@ -1,40 +1,25 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/logo-Letter.svg";
 import { ThemeToggle } from "../dashboard/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { LucideLayoutDashboard } from "lucide-react";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import HeroImageDark from "@/public/hero-d.png";
 import HeroImageLight from "@/public/hero-w.png";
 
 export function Hero() {
-  
   const { theme, resolvedTheme } = useTheme();
   const [isThemeLoaded, setIsThemeLoaded] = useState(false);
-  const [session, setSession] = useState<KindeUser<any> | null>(null);
+
+  const { user } = useKindeBrowserClient();
 
   useEffect(() => {
     setIsThemeLoaded(true);
   }, [theme]);
-
-  useEffect(() => {
-    const fetchSession = async () => {
-      if (typeof window === "undefined") {
-        const { getKindeServerSession } = await import("@kinde-oss/kinde-auth-nextjs/server");
-        const { getUser } = getKindeServerSession();
-        const sessionData = await getUser();
-        setSession(sessionData);
-      }
-    };
-
-    fetchSession();
-  }, []);
 
   const HeroImage = resolvedTheme === "dark" ? HeroImageDark : HeroImageLight;
 
@@ -52,21 +37,23 @@ export function Hero() {
           </div>
         </div>
         <nav className="hidden md:flex md:justify-end md:space-x-4">
-        <ThemeToggle />
-        {session?.id ? (
-          <Link href="/dashboard">
-            <Button variant="secondary"><LucideLayoutDashboard /> </Button>
-          </Link>
-        ) : (
-          <>
-          <LoginLink>
-            <Button variant="secondary">Sign in</Button>
-          </LoginLink>
-          <RegisterLink>
-            <Button>Sign up</Button>
-          </RegisterLink>
-          </>
-        )}
+          <ThemeToggle />
+          {user ? (
+            <Link href="/dashboard">
+              <Button variant="secondary">
+                <LucideLayoutDashboard />
+              </Button>
+            </Link>
+          ) : (
+            <>
+              <LoginLink>
+                <Button variant="secondary">Sign in</Button>
+              </LoginLink>
+              <RegisterLink>
+                <Button>Sign up</Button>
+              </RegisterLink>
+            </>
+          )}
         </nav>
       </div>
     </>
