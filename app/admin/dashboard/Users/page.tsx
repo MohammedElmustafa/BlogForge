@@ -24,6 +24,10 @@ import {
 } from "@/components/ui/table";
 import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 async function getAllUsers() {
   const users = await prisma.user.findMany({
     include: {
