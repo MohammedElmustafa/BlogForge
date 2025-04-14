@@ -13,8 +13,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -27,6 +25,9 @@ import {
 } from "@/components/ui/table";
 import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 async function getAllSites() {
   const data = await prisma.site.findMany({
