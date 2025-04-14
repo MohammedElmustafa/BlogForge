@@ -1,6 +1,4 @@
 import prisma from "@/app/utils/db";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,12 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   Table,
   TableBody,
   TableCell,
@@ -22,32 +14,39 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { MoreHorizontal } from "lucide-react";
-import Link from "next/link";
-async function getAllMassage() {
-  const Massages = await prisma.contactMessage.findMany({
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+async function getAllMessages() {
+  const messages = await prisma.contactMessage.findMany({
     select: {
+      id: true,
       name: true,
       email: true,
       message: true,
       createdAt: true,
     },
   });
-  return Massages;
+  return messages;
 }
+
 export default async function AdminDashboardContact() {
-  const Massage = await getAllMassage();
+  const messages = await getAllMessages();
+
   return (
     <>
-      <h1 className="text-2xl font-bold">All Massages</h1>
-      {Massage.length === 0 ? (
-        <div>No Massages found</div>
+      <h1 className="text-2xl font-bold">All Messages</h1>
+      {messages.length === 0 ? (
+        <div>No Messages found</div>
       ) : (
         <div>
           <Card>
             <CardHeader>
-              <CardTitle>All Massages</CardTitle>
-              <CardDescription>Manage all Massages from this dashboard</CardDescription>
+              <CardTitle>All Messages</CardTitle>
+              <CardDescription>
+                Manage all Messages from this dashboard
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
@@ -59,14 +58,20 @@ export default async function AdminDashboardContact() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {Massage.map((Massage : any) => (
-                    <TableRow key={Massage.id}>
-                      <TableCell className="text-left">{Massage.name}</TableCell>
-                      <TableCell className="text-left">{Massage.email}</TableCell>
-                      <TableCell className="text-left">{Massage.message}</TableCell>
+                  {messages.map((message: any) => (
+                    <TableRow key={message.id}>
+                      <TableCell className="text-left">
+                        {message.name}
+                      </TableCell>
+                      <TableCell className="text-left">
+                        {message.email}
+                      </TableCell>
+                      <TableCell className="text-left">
+                        {message.message}
+                      </TableCell>
                     </TableRow>
                   ))}
-                  </TableBody>
+                </TableBody>
               </Table>
             </CardContent>
           </Card>
