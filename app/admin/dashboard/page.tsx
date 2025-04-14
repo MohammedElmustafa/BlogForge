@@ -3,7 +3,6 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 import prisma from "@/app/utils/db";
-import dynamic from "next/dynamic";
 
 // Dynamically import chart components (client-side only)
 const StatisticsChart = dynamicImport(
