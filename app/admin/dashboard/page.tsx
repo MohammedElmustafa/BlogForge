@@ -1,3 +1,4 @@
+import dynamicImport from "next/dynamic";
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
@@ -5,11 +6,11 @@ import prisma from "@/app/utils/db";
 import dynamic from "next/dynamic";
 
 // Dynamically import chart components (client-side only)
-const StatisticsChart = dynamic(
+const StatisticsChart = dynamicImport(
   () => import("../../components/admindashboard/StatisticsChart"),
   { ssr: false }
 );
-const TrendsChart = dynamic(
+const TrendsChart = dynamicImport(
   () => import("../../components/admindashboard/TrendsChart"),
   { ssr: false }
 );
