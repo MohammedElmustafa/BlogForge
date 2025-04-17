@@ -26,6 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-site-verification" content="zAriTwQSkPVRVzjYnErgckdUmNad8jNXsR572NUv8Y4" />
+      </head>
       <body className={`${geistSans.className} ${geistMono.className}`}>
         <ThemeProvider
           attribute="class"
