@@ -1,30 +1,18 @@
-import { EmptyState } from "@/app/components/admindashboard/EmptyStateAdmin";
 import prisma from "@/app/utils/db";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { MoreHorizontal } from "lucide-react";
+import { FileIcon, PlusCircle } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+
+import Defaultimage from "@/public/default.png";
+import { EmptyState } from "@/app/components/dashboard/EmptyState";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -55,98 +43,51 @@ async function getAllSites() {
   }));
 }
 
-export default async function AdminDashboard() {
-  
+export default async function SitesRoute() {
   const sites = await getAllSites();
-
   return (
     <>
-      <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-      {sites.length === 0 ? (
+      <div className="flex w-full justify-end">
+        <Button asChild>
+          <Link href={"/dashboard/sites/new"}>
+            <PlusCircle className="mr-2 size-4" /> Create Site
+          </Link>
+        </Button>
+      </div>
+      {sites === undefined || sites.length === 0 ? (
         <EmptyState
-          title="No Sites Found"
-          description="There are currently no sites created."
+          title="You dont have any Sites created"
+          description="You currently dont have any Sites. Please create some so that you can
+        see them right here!"
+          buttonText="Create Site"
+          href="/dashboard/sites/new"
         />
       ) : (
-        <div>
-          <Card>
-            <CardHeader>
-              <CardTitle>All Sites</CardTitle>
-              <CardDescription>
-                Manage all sites from this dashboard
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-1/4">Owner</TableHead>
-                    <TableHead className="w-1/4">Site Subdirectory</TableHead>
-                    <TableHead className="w-1/4">Articles</TableHead>
-                    <TableHead className="w-1/4">Status</TableHead>
-                    <TableHead className="w-1/4">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {sites.map((site) => (
-                    <TableRow key={site.id}>
-                      <TableCell className="text-left w-1/4">{site.User ? `${site.User.firstName} ${site.User.lastName}` : 'Unknown'}</TableCell>
-                      <TableCell className="text-left w-1/4">
-                        <Link href={`/blog/${site.subdirectory}`} target="_blank">
-                          {site.subdirectory}
-                        </Link>
-                      </TableCell>
-                      <TableCell className="w-1/4">
-                        {site.posts.length > 0 ? (
-                          <Badge variant="outline">{site.posts.length} Articles</Badge>
-                        ) : (
-                          <Badge variant="outline" className="text-red-500">
-                            No Articles
-                          </Badge>
-                        )}
-                      </TableCell>
-                      <TableCell className="w-1/4">
-                        <Badge
-                          variant="outline"
-                          className={site.isPublished ? "bg-green-500/10 text-green-500" : "bg-red-500/10 text-red-500"}
-                        >
-                          {site.isPublished ? 'Published' : 'Unpublished'}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-end">
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button size="icon" variant="ghost">
-                              <MoreHorizontal className="size-4" />
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem asChild>
-                              <Link href={`/admin/dashboard/sites/${site.id}/settings`}>
-                                Settings
-                              </Link>
-                            </DropdownMenuItem>
-                            {site.posts.length > 0 && (
-                              <DropdownMenuItem asChild>
-                                <Link href={`/blog/${site.subdirectory}`}>
-                                  View Site
-                                </Link>
-                              </DropdownMenuItem>
-                            )}
-                            <DropdownMenuItem asChild>
-                              <Link href={`/admin/dashboard/sites/${site.id}/unpublish`}>
-                                Unpublish
-                              </Link>
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+          {sites.map((item) => (
+            <Card key={item.id}>
+              <Image
+                src={item.imageUrl ?? Defaultimage}
+                alt={item.name}
+                className="rounded-t-lg w-full h-[200px]"
+                width={400}
+                height={200}
+              />
+              <CardHeader>
+                <CardTitle className="truncate">{item.name}</CardTitle>
+                <CardDescription className="line-clamp-3">
+                  {item.description}
+                </CardDescription>
+              </CardHeader>
+              <CardFooter>
+                <Button asChild className="w-full">
+                  <Link href={`/admin/dashboard/sites/${item.id}`}>
+                    View Articles
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
         </div>
       )}
     </>
