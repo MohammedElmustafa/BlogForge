@@ -9,7 +9,7 @@ import { Footer } from "../components/frontend/Footer";
 export default async function AllBlogsPage() {
   const blogs = await prisma.site.findMany({
     orderBy: {
-      createdAt: "desc",
+      createdAt: "asc",
     },
     select: {
       id: true,
