@@ -47,13 +47,6 @@ export default async function SitesRoute() {
   const sites = await getAllSites();
   return (
     <>
-      <div className="flex w-full justify-end">
-        <Button asChild>
-          <Link href={"/dashboard/sites/new"}>
-            <PlusCircle className="mr-2 size-4" /> Create Site
-          </Link>
-        </Button>
-      </div>
       {sites === undefined || sites.length === 0 ? (
         <EmptyState
           title="You dont have any Sites created"
