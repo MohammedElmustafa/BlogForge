@@ -32,7 +32,7 @@ async function getData(subDir: string) {
           id: true,
         },
         orderBy: {
-          createdAt: "desc",
+          createdAt: "asc",
         },
       },
     },
