@@ -6,6 +6,9 @@ import Defaultimage from "@/public/default.png";
 import { Hero } from "../components/frontend/Hero";
 import { Footer } from "../components/frontend/Footer";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function AllBlogsPage() {
   const blogs = await prisma.site.findMany({
     orderBy: {
