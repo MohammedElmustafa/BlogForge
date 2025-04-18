@@ -25,9 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="google-site-verification" content="zAriTwQSkPVRVzjYnErgckdUmNad8jNXsR572NUv8Y4" />
+        <meta
+          name="google-site-verification"
+          content="zAriTwQSkPVRVzjYnErgckdUmNad8jNXsR572NUv8Y4"
+        />
       </head>
       <body className={`${geistSans.className} ${geistMono.className}`}>
         <ThemeProvider

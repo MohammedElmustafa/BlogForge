@@ -7,11 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { FileIcon, PlusCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
 import Defaultimage from "@/public/default.png";
+
 import { EmptyState } from "@/app/components/dashboard/EmptyState";
 
 export const dynamic = "force-dynamic";
