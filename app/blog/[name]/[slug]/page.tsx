@@ -7,6 +7,8 @@ import Link from "next/link";
 import { JSONContent } from "novel";
 import prisma from "@/app/utils/db";
 import { notFound } from "next/navigation";
+import { ThemeToggle } from "@/app/components/dashboard/ThemeToggle";
+import { Hero } from "@/app/components/frontend/Hero";
 async function getData(slug: string) {
   const data = await prisma.post.findUnique({
     where: {
@@ -33,6 +35,7 @@ export default async function SlugRoute({
   const data = await getData(params.slug);
   return (
     <>
+      <Hero />
       <div className="flex items-center gap-x-3 pt-10 pb-5">
         <Button size="icon" variant="outline" asChild>
           <Link href={`/blog/${params.name}`}>
