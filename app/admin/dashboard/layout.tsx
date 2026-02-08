@@ -55,7 +55,6 @@ export default function AdminDashboardLayout({ children }: { children: ReactNode
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b border-gray-200 dark:border-gray-700 px-4 lg:h-[60px] lg:px-6">
             <Link href="/" className="flex items-center gap-2 font-semibold">
-              <Image src={Logo} alt="Logo" className="w-8 h-8" />
               <h3 className="text-lg lg:text-2xl text-gray-800 dark:text-gray-100">
                 Blog<span className="text-primary dark:text-primary/80">Forge</span>
               </h3>
